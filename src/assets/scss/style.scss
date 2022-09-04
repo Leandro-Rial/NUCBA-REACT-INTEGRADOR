@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;700&display=swap');
+
+$fontFamilyTitle: 'Montserrat';
+$fontFamilyP: 'Roboto';
+
+@mixin scrollBar {
+    ::-webkit-scrollbar {
+        width: 4px;
+        height: 4px;
+    }
+    
+    ::-webkit-scrollbar-track {
+        background: #99ff8a;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background-color: #39ff14;
+        border-radius: 8px;
+        border: 1px solid #99ff8a;
+    }
+};
+
+@mixin flexboxCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+};
+
+@mixin boldTitle {
+    font: normal bold 2.25rem/2.625rem $fontFamilyTitle;
+    color: #fff;
+};
+
+@mixin normalTitle {
+    font: normal bold 2.25rem/2.625rem $fontFamilyTitle;
+    color: #fff;
+};
+
+@mixin boldP {
+    font: normal 400 1rem/1.8125rem $fontFamilyTitle;
+    color: #fff;
+};
+
+@mixin normalP {
+    font: normal 400 1rem/1.8125rem $fontFamilyTitle;
+    color: #fff;
+};
+
+/* ABOUT US */
+@import './pages/aboutUs/aboutUs';
+
+/* AUTH */
+@import 'pages/auth/login';
+@import 'pages/auth/register';
+
+/* FORGOT PASSWORD */
+@import 'pages/forgotPassword/forgotPasword';
+
+/* HOME */
+@import 'pages/home/hero';
+@import 'pages/home/someProducts';
+@import 'pages/home/news';
+@import 'pages/home/littleInfo';
+
+/* PRODUCTS */
+@import 'pages/products/products';
+
+/* SUCCESS */
+@import 'pages/success/success';
+
+body {
+    @include scrollBar;
+}
+
+h1, h2, h3, h4, h5, h6, p, span, strong, a {
+    letter-spacing: 0.5px;
+}
