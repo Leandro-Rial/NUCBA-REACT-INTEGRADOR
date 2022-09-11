@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;700&display=swap');
-
 $fontFamilyTitle: 'Montserrat';
 $fontFamilyP: 'Roboto';
 
@@ -51,23 +50,23 @@ $fontFamilyP: 'Roboto';
 @import './pages/aboutUs/aboutUs';
 
 /* AUTH */
-@import 'pages/auth/login';
-@import 'pages/auth/register';
+@import './pages/auth/login';
+@import './pages/auth/register';
 
 /* FORGOT PASSWORD */
-@import 'pages/forgotPassword/forgotPasword';
+@import './pages/forgotPassword/forgotPasword';
 
 /* HOME */
-@import 'pages/home/hero';
-@import 'pages/home/someProducts';
-@import 'pages/home/news';
-@import 'pages/home/littleInfo';
+@import './pages/home/hero';
+@import './pages/home/someProducts';
+@import './pages/home/news';
+@import './pages/home/littleInfo';
 
 /* PRODUCTS */
-@import 'pages/products/products';
+@import './pages/products/products';
 
 /* SUCCESS */
-@import 'pages/success/success';
+@import './pages/success/success';
 
 body {
     @include scrollBar;

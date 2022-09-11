@@ -2,7 +2,12 @@ import React, { useState } from 'react'
 
 import { CustomTextInput, MyTextInputPassword } from '../../utils/Input'
 import ButtonFormik from '../../utils/ButtonFormik'
+import GoogleButton from '../../utils/GoogleButton'
 
+import { register } from '../../redux/slices/user/userSlices'
+
+import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 
@@ -11,9 +16,26 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff'
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false)
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+  
+  const dispatch = useDispatch()
 
   const showHidePassword = () => {
     setShowPassword(!showPassword)
+  }
+
+  const showHideConfirmPassword = () => {
+    setShowConfirmPassword(!showConfirmPassword)
+  }
+
+  const onSubmitRegister = async (credentials) => {
+    try {
+      
+      await dispatch(register(credentials)).unwrap()
+
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
@@ -34,11 +56,15 @@ const Register = () => {
             .required("Email is required"),
           password: Yup.string()
             .required("Password is required")
+            .matches(
+              /^.*(?=.{8,})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
+              "The password must contain at least 8 characters, one uppercase, one lowercase, and one number"
+            ),
+          confirmPassword: Yup.string()
+            .required("Please retype your password to confirm it.")
+            .oneOf([Yup.ref("password"), null], "Your passwords don't match. Please retype your password to confirm it."),
         })}
-        onSubmit={async (values) => {
-          await new Promise((r) => setTimeout(r, 500));
-          alert(JSON.stringify(values, null, 2));
-        }}
+        onSubmit={onSubmitRegister}
       >
         {({
           isValid,
@@ -75,6 +101,21 @@ const Register = () => {
               />
 
               <div onClick={() => showHidePassword()} className="successCheck">{showPassword ? <VisibilityOff /> : <Visibility />}</div>
+            </div>
+            <div className="password--input">
+                <MyTextInputPassword
+                  name="confirmPassword"
+                  type={showConfirmPassword ? 'text' : 'password'}
+                  placeholder="Confirm Password"
+                  label="Confirm Password"
+                  value={values.confirmPassword}
+                  onChange={handleChange}
+                />
+                <div onClick={() => showHideConfirmPassword()} className="successPasswordCheck">{showConfirmPassword ? <VisibilityOff /> : <Visibility />}</div>
+              </div>
+            <GoogleButton />
+            <div className="no-account--texts">
+              <p className='texts--p'>Already you have an account? <Link to="/login">Log in</Link></p>
             </div>
             <ButtonFormik text="submit" isValid={isValid} dirty={dirty} />
           </Form>

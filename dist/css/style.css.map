@@ -1,0 +1,19 @@
+{
+    "version": 3,
+    "mappings": "AA+CA,cAAc;AAGd,UAAU;AAIV,qBAAqB;AAGrB,UAAU;AAMV,cAAc;AAGd,aAAa;AAGb,AAjEI,IAiEA,CAjEA,mBAAmB,CAAC;EAChB,KAAK,EAAE,GAAG;EACV,MAAM,EAAE,GAAG;CACd;;AA8DL,AA5DI,IA4DA,CA5DA,yBAAyB,CAAC;EACtB,UAAU,EAAE,OAAO;CACtB;;AA0DL,AAxDI,IAwDA,CAxDA,yBAAyB,CAAC;EACtB,gBAAgB,EAAE,OAAO;EACzB,aAAa,EAAE,GAAG;EAClB,MAAM,EAAE,iBAAiB;CAC5B;;AAwDL,AAAA,EAAE,EAAE,EAAE,EAAE,EAAE,EAAE,EAAE,EAAE,EAAE,EAAE,EAAE,EAAE,CAAC,EAAE,IAAI,EAAE,MAAM,EAAE,CAAC,CAAC;EACvC,cAAc,EAAE,KAAK;CACxB",
+    "sources": [
+        "../../src/assets/scss/style.scss",
+        "../../src/assets/scss/pages/aboutUs/_aboutUs.scss",
+        "../../src/assets/scss/pages/auth/_login.scss",
+        "../../src/assets/scss/pages/auth/_register.scss",
+        "../../src/assets/scss/pages/forgotPassword/_forgotPasword.scss",
+        "../../src/assets/scss/pages/home/_hero.scss",
+        "../../src/assets/scss/pages/home/_someProducts.scss",
+        "../../src/assets/scss/pages/home/_news.scss",
+        "../../src/assets/scss/pages/home/_littleInfo.scss",
+        "../../src/assets/scss/pages/products/_products.scss",
+        "../../src/assets/scss/pages/success/_success.scss"
+    ],
+    "names": [],
+    "file": "style.css"
+}

@@ -3,17 +3,41 @@ import React, { useState } from 'react'
 import { CustomTextInput, MyTextInputPassword } from '../../utils/Input'
 import ButtonFormik from '../../utils/ButtonFormik'
 
+import { login, loginWithGoogle } from '../../redux/slices/user/userSlices'
+import { showSuccess } from '../../utils/Toasts'
+
+import { useDispatch } from 'react-redux'
+import { Link, useNavigate } from 'react-router-dom'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 
 import Visibility from '@mui/icons-material/Visibility'
 import VisibilityOff from '@mui/icons-material/VisibilityOff'
+import GoogleButton from '../../utils/GoogleButton'
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false)
 
+  const dispatch = useDispatch()
+  
+  const navigate = useNavigate();
+
   const showHidePassword = () => {
     setShowPassword(!showPassword)
+  }
+
+  const onSubmitLogin = async (credentials) => {
+    try {
+      
+      await dispatch(login(credentials)).unwrap()
+
+      showSuccess("User logged in successfully!")
+
+      navigate('/home')
+
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   return (
@@ -31,10 +55,7 @@ const Login = () => {
           password: Yup.string()
             .required("Password is required")
         })}
-        onSubmit={async (values) => {
-          await new Promise((r) => setTimeout(r, 500));
-          alert(JSON.stringify(values, null, 2));
-        }}
+        onSubmit={onSubmitLogin}
       >
         {({
           isValid,
@@ -63,6 +84,10 @@ const Login = () => {
               />
 
               <div onClick={() => showHidePassword()} className="successCheck">{showPassword ? <VisibilityOff /> : <Visibility />}</div>
+            </div>
+            <GoogleButton />
+            <div className="no-account--texts">
+              <p className='texts--p'>You do not have an account? <Link to="/sign-up">Sign up here</Link></p>
             </div>
             <ButtonFormik text="submit" isValid={isValid} dirty={dirty} />
           </Form>

@@ -1,8 +1,10 @@
 import React from 'react'
+import Navbar from '../../utils/Navbar'
 
 const Aboutus = () => {
   return (
     <div className="about-us--wrapper">
+      <Navbar />
       <div className="about-us--content">
         <h1>About us</h1>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi vitae placeat ipsa, ullam molestias explicabo odio harum possimus odit nobis aliquid iste voluptate, quia atque vel doloribus dicta quam voluptatem dignissimos? Quasi magnam earum repellat illum totam delectus pariatur eius, libero vitae quibusdam iure facilis voluptate qui cum culpa maiores commodi dolores odit labore? Earum delectus voluptate voluptatem dolore optio itaque minus repellat eligendi dolor voluptates, est reprehenderit exercitationem consequuntur cupiditate rerum tempore accusamus. Vitae nostrum, natus exercitationem accusamus quo minus aspernatur vero voluptates ea eos dolore dignissimos nemo, velit accusantium ut, ullam aperiam officia. Illum temporibus recusandae commodi magni excepturi eaque voluptatum dolorum facere ipsam harum porro culpa ex corrupti et mollitia, rem minima, saepe minus sunt sint nesciunt!</p>

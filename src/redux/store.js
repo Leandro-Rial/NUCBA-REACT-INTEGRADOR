@@ -1,13 +1,32 @@
-import persistStore from 'redux-persist/es/persistStore';
-import rootReducer from './root-reducer';
+import { persistReducer } from "redux-persist"
+import storage from 'redux-persist/lib/storage';
+import thunk from 'redux-thunk';
+import { combineReducers } from "redux"
+import { configureStore } from '@reduxjs/toolkit';
+import recommendedSlices from './slices/recommended/recommendedSlices';
+import categoriesSlices from './slices/categories/categoriesSlices';
+import productSlices from './slices/products/productSlices';
+import userSlices from './slices/user/userSlices';
 
-import { configureStore } from '@reduxjs/toolkit'
+const reducers = combineReducers({
+  recommended: recommendedSlices,
+  categories: categoriesSlices,
+  products: productSlices,
+  user: userSlices,
+});
 
-const initialState = {};
+const persistConfig = {
+  key: 'root',
+  storage,
+  whitelist: [recommendedSlices],
+};
 
-export const store = configureStore({
-  reducer: rootReducer,
-  initialState
+const persistedReducer = persistReducer(persistConfig, reducers);
+
+const store = configureStore({
+  reducer: persistedReducer,
+  devTools: process.env.NODE_ENV !== 'production',
+  middleware: [thunk]
 })
 
-export const persistor = persistStore(store);
+export default store

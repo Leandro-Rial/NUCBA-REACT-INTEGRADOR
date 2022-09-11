@@ -1,5 +1,6 @@
 import { initializeApp } from 'firebase/app';
-import { firebaseConfig } from './Firebase';
+import { firebaseConfig } from './FirebaseConfig';
+import { showMessage } from '../Toasts';
 
 import {
   getAuth,
@@ -9,6 +10,42 @@ import {
   sendPasswordResetEmail,
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
+  signOut,
 } from 'firebase/auth';
 
 const app = initializeApp(firebaseConfig);
+
+export const auth = getAuth(app);
+
+export const signIn = (email, password) => signInWithEmailAndPassword(auth, email, password);
+
+export const signUp = async (email, password) => {
+  const credentials = await createUserWithEmailAndPassword(
+    auth,
+    email,
+    password
+  );
+
+  await sendEmailVerification(credentials.user, {
+    url: `${process.env.REACT_APP_URL}/`,
+  });
+
+  showMessage(`A verification email was sent to ${email}`);
+
+  return credentials;
+};
+
+export const resetPassword = async email => {
+  await sendPasswordResetEmail(auth, email, {
+    url: `${process.env.REACT_APP_URL}/login`,
+  });
+  alert(`A password recovery email was sent to ${email}`);
+};
+
+const providerGoogle = new GoogleAuthProvider();
+
+export const signInGoogle = () => signInWithPopup(auth, providerGoogle);
+
+export const logOut = async () => {
+  await signOut(auth)
+}

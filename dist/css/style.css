@@ -1,0 +1,25 @@
+/* ABOUT US */
+/* AUTH */
+/* FORGOT PASSWORD */
+/* HOME */
+/* PRODUCTS */
+/* SUCCESS */
+body ::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+body ::-webkit-scrollbar-track {
+  background: #99ff8a;
+}
+
+body ::-webkit-scrollbar-thumb {
+  background-color: #39ff14;
+  border-radius: 8px;
+  border: 1px solid #99ff8a;
+}
+
+h1, h2, h3, h4, h5, h6, p, span, strong, a {
+  letter-spacing: 0.5px;
+}
+/*# sourceMappingURL=style.css.map */
