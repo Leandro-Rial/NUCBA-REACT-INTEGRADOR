@@ -1,0 +1,31 @@
+.btn--wrapper__shadow__disabled {
+    @include btnWrapperShadowDisabled;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    width: 100%;
+    
+    .btn--disabled {
+        @include btnFormDisabled;
+        width: 100%;
+        margin: 10px 0;
+        clip-path: polygon(2% 0, 100% 0, 100% 80%, 98% 100%, 0 100%, 0 25%);
+        transition: width 0.3s;
+    }
+}
+
+.btn--wrapper__shadow {
+    @include btnWrapperShadow;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    width: 100%;
+
+    .btn {
+        @include btnForm;
+        width: 100%;
+        margin: 10px 0;
+        clip-path: polygon(2% 0, 100% 0, 100% 80%, 98% 100%, 0 100%, 0 25%);
+        transition: width 0.3s;
+    }
+}

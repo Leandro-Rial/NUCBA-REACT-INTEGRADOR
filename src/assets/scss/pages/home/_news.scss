@@ -1,0 +1,25 @@
+.news--wrapper {
+    @include flexboxCenter;
+    padding: 20px;
+
+    .news--title {
+        @include boldTitle;
+        margin-bottom: 20px;
+    }
+
+    .recommendation--wrapper {
+        padding: 20px;
+        width: 100%;
+
+        @import '../../utils/cards/cardsProducts';
+
+        .slick-slider, .slick-cloned {
+            div {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 340px;
+            }
+        }
+    }
+}

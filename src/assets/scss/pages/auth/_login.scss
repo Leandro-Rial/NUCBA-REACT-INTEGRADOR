@@ -1,0 +1,86 @@
+.login--wrapper {
+    @include flexboxCenter;
+    width: 100%;
+    min-height: 100vh;
+    height: 100%;
+    background: rgb(2,0,36);
+    background: linear-gradient(135deg, rgba(2,0,36,1) 0%, rgba(54,54,236,1) 60%, rgba(217,16,223,1) 100%);
+    padding: 20px 0;
+
+    .login--title {
+        @include normalTitle;
+        margin-bottom: 40px;
+    }
+    
+    .form--login {
+        width: 90%;
+
+        .password--login {
+            position: relative;
+            margin-top: 40px;
+        
+            .input--form__wrapper {
+                margin-top: 10px;
+            
+                @import '../../utils/inputs';
+            }
+            
+            .successPasswordCheck {
+                position: absolute;
+                right: 10px;
+                top: 13px;
+                filter: invert(19%) sepia(50%) saturate(6007%) hue-rotate(163deg)
+                brightness(97%) contrast(101%);
+                cursor: pointer;
+            }
+        }
+
+        @import '../../utils/inputs';
+
+        @import '../../utils/login-register-links';
+        
+        @import '../../utils/buttonGoogle';
+
+        @import '../../utils/btn';
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .login--wrapper {
+        justify-content: flex-start;
+        padding: 10% 0;
+        
+        .form--login {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-content: center;
+            height: 100%;
+            min-height: 77vh;
+
+            .btns--wrapper {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-direction: row-reverse;
+
+                .button-google {
+                    width: 100%;
+                    margin: 20px 20px 0 0;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .login--wrapper {
+        justify-content: center;
+        padding: 10% 0;
+        
+        .form--login {
+            width: 70%;
+            min-height: 40vh;
+        }
+    }
+}

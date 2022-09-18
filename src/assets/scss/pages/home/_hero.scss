@@ -1,0 +1,57 @@
+.hero--wrapper {
+    
+    .carousel {
+        
+        .carousel-inner {
+            
+            .carousel-item, .active {
+                img {
+                    height: 50vh;
+                    object-fit: cover;
+                }
+            }
+
+            .carousel-item::before {
+                @include beforeHero;
+            }
+
+            .active::before {
+                @include beforeHero;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .hero--wrapper {
+    
+        .carousel {
+            
+            .carousel-inner {
+                
+                .carousel-item, .active {
+                    img {
+                        height: 70vh;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .hero--wrapper {
+    
+        .carousel {
+            
+            .carousel-inner {
+                
+                .carousel-item, .active {
+                    img {
+                        height: 90vh;
+                    }
+                }
+            }
+        }
+    }
+}

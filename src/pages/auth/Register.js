@@ -6,7 +6,7 @@ import GoogleButton from '../../utils/GoogleButton'
 
 import { register } from '../../redux/slices/user/userSlices'
 
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
@@ -18,6 +18,8 @@ const Register = () => {
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
   
+  const navigate = useNavigate();
+
   const dispatch = useDispatch()
 
   const showHidePassword = () => {
@@ -33,6 +35,8 @@ const Register = () => {
       
       await dispatch(register(credentials)).unwrap()
 
+      navigate('/home')
+
     } catch (error) {
       console.log(error)
     }
@@ -40,6 +44,7 @@ const Register = () => {
 
   return (
     <div className="login--wrapper register">
+      <h1 className="login--title">Integrador</h1>
       <Formik
         initialValues={{
           username: '',
@@ -73,36 +78,38 @@ const Register = () => {
           handleChange,
           handleSubmit
         }) => (
-          <Form onSubmit={handleSubmit}>
-            <CustomTextInput
-              name="username"
-              type="text"
-              placeholder="Username"
-              label="Username"
-              value={values.username}
-              onChange={handleChange}
-            />
-            <CustomTextInput
-              name="email"
-              type="email"
-              placeholder="E-mail"
-              label="E-mail"
-              value={values.email}
-              onChange={handleChange}
-            />
-            <div className="password--login">
-              <MyTextInputPassword
-                name="password"
-                type={showPassword ? 'text' : 'password'}
-                label="Password"
-                placeholder="Password"
-                value={values.password}
+          <Form onSubmit={handleSubmit} className="form--login">
+            <div>
+              <CustomTextInput
+                name="username"
+                type="text"
+                placeholder="Username"
+                label="Username"
+                value={values.username}
                 onChange={handleChange}
               />
+              <div className="input-space" style={{ height: 16 }}></div>
+              <CustomTextInput
+                name="email"
+                type="email"
+                placeholder="E-mail"
+                label="E-mail"
+                value={values.email}
+                onChange={handleChange}
+              />
+              <div className="password--login">
+                <MyTextInputPassword
+                  name="password"
+                  type={showPassword ? 'text' : 'password'}
+                  label="Password"
+                  placeholder="Password"
+                  value={values.password}
+                  onChange={handleChange}
+                />
 
-              <div onClick={() => showHidePassword()} className="successCheck">{showPassword ? <VisibilityOff /> : <Visibility />}</div>
-            </div>
-            <div className="password--input">
+                <div onClick={() => showHidePassword()} className="successPasswordCheck">{showPassword ? <VisibilityOff /> : <Visibility />}</div>
+              </div>
+              <div className="password--login">
                 <MyTextInputPassword
                   name="confirmPassword"
                   type={showConfirmPassword ? 'text' : 'password'}
@@ -113,11 +120,16 @@ const Register = () => {
                 />
                 <div onClick={() => showHideConfirmPassword()} className="successPasswordCheck">{showConfirmPassword ? <VisibilityOff /> : <Visibility />}</div>
               </div>
-            <GoogleButton />
-            <div className="no-account--texts">
-              <p className='texts--p'>Already you have an account? <Link to="/login">Log in</Link></p>
             </div>
-            <ButtonFormik text="submit" isValid={isValid} dirty={dirty} />
+            <div>
+              <div className="no-account--texts">
+                <p className='texts--p'>Already you have an account? <Link to="/login" className="texts-link">Log in</Link></p>
+              </div>
+              <div className="btns--wrapper">
+                <ButtonFormik text="submit" isValid={isValid} dirty={dirty} />
+                <GoogleButton />
+              </div>
+            </div>
           </Form>
         )}
       </Formik>

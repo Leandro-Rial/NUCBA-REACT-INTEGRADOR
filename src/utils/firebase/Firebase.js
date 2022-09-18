@@ -19,12 +19,12 @@ export const auth = getAuth(app);
 
 export const signIn = (email, password) => signInWithEmailAndPassword(auth, email, password);
 
-export const signUp = async (email, password) => {
+export const signUp = async (email, password, username) => {
   const credentials = await createUserWithEmailAndPassword(
     auth,
     email,
     password
-  );
+  )
 
   await sendEmailVerification(credentials.user, {
     url: `${process.env.REACT_APP_URL}/`,

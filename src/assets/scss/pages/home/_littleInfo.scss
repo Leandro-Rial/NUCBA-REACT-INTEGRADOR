@@ -1,0 +1,13 @@
+.little-info--wrapper {
+    @include flexboxCenter;
+    padding: 20px;
+
+    .little-info--title {
+        @include boldTitle;
+        margin-bottom: 20px;
+    }
+
+    .accordion {
+        width: 100%;
+    }
+}

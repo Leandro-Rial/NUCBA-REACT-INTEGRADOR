@@ -42,6 +42,7 @@ const Login = () => {
 
   return (
     <div className="login--wrapper">
+      <h1 className="login--title">Integrador</h1>
       <Formik
         initialValues={{
           email: '',
@@ -64,32 +65,38 @@ const Login = () => {
           handleChange,
           handleSubmit
         }) => (
-          <Form onSubmit={handleSubmit}>
-            <CustomTextInput
-              name="email"
-              type="email"
-              placeholder="E-mail"
-              label="E-mail"
-              value={values.email}
-              onChange={handleChange}
-            />
-            <div className="password--login">
-              <MyTextInputPassword
-                name="password"
-                type={showPassword ? 'text' : 'password'}
-                label="Password"
-                placeholder="Password"
-                value={values.password}
+          <Form onSubmit={handleSubmit} className="form--login">
+            <div>
+              <CustomTextInput
+                name="email"
+                type="email"
+                placeholder="E-mail"
+                label="E-mail"
+                value={values.email}
                 onChange={handleChange}
               />
+              <div className="password--login">
+                <MyTextInputPassword
+                  name="password"
+                  type={showPassword ? 'text' : 'password'}
+                  label="Password"
+                  placeholder="Password"
+                  value={values.password}
+                  onChange={handleChange}
+                />
 
-              <div onClick={() => showHidePassword()} className="successCheck">{showPassword ? <VisibilityOff /> : <Visibility />}</div>
+                <div onClick={() => showHidePassword()} className="successPasswordCheck">{showPassword ? <VisibilityOff /> : <Visibility />}</div>
+              </div>
             </div>
-            <GoogleButton />
-            <div className="no-account--texts">
-              <p className='texts--p'>You do not have an account? <Link to="/sign-up">Sign up here</Link></p>
+            <div>
+              <div className="no-account--texts">
+                <p className='texts--p'>You do not have an account? <Link to="/sign-up" className="texts-link">Sign up here</Link></p>
+              </div>
+              <div className="btns--wrapper">
+                <ButtonFormik text="submit" isValid={isValid} dirty={dirty} />
+                <GoogleButton />
+              </div>
             </div>
-            <ButtonFormik text="submit" isValid={isValid} dirty={dirty} />
           </Form>
         )}
       </Formik>

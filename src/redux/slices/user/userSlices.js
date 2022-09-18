@@ -56,9 +56,9 @@ export const loginWithGoogle = createAsyncThunk("auth/loginWithGoogle", async ()
 export const register = createAsyncThunk("auth/register", async (data) => {
   try {
   
-    const { email, password } = data;
+    const { email, password, username } = data;
 
-    const { user } = await signUp(email, password)
+    const { user } = await signUp(email, password, username)
 
     const access_token = user.access_token
     const user_data = user
@@ -66,7 +66,7 @@ export const register = createAsyncThunk("auth/register", async (data) => {
     localStorage.setItem("token-wp", access_token)
     localStorage.setItem("userData", JSON.stringify(user_data))
 
-    return { access_token }
+    return { access_token, user_data }
   } catch (error) {
     const { code } = error
     switch (code) {
@@ -86,6 +86,8 @@ export const logout = createAsyncThunk("auth/logout", async () => {
     await logOut();
 
     localStorage.clear()
+
+    // window.location.reload()
 
     return true
   } catch (error) {
@@ -147,7 +149,8 @@ const userSlices = createSlice({
     },
     // POSTS
     [register.fulfilled]: (state, action) => {
-      // state.token = action.payload.access_token
+      state.token = action.payload.access_token
+      state.user = action.payload.user_data
       state.status = "success"
     },
     // ERROR

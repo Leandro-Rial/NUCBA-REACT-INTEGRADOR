@@ -6,7 +6,7 @@ import { getRandom } from "../../../utils/utils";
 const recommendedSlices = createSlice({
     name: "recommended",
     initialState: {
-        recommended: getRandom(products, 4)
+        recommended: getRandom(products, 6)
     },
     reducers: {
         'GET_RECOMMENDED': (state, action) => {

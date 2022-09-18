@@ -1,0 +1,99 @@
+.input--form__wrapper {
+    margin-top: 10px;
+    height: fit-content;
+
+    .form--success {
+        position: relative;
+    
+        .form--label {
+            position: absolute;
+            @include normalP;
+            color: #fff !important;
+            top: -27px;
+        }
+    
+        .form--input {
+            @include formInput;
+        }
+    
+        .form--input::placeholder {
+            @include formInputSize;
+        }
+        .form--input:-ms-input-placeholder {
+            /* IE 10+ */
+            @include formInputSize;
+        }
+        .form--input::-webkit-input-placeholder {
+            /* WebKit */
+            @include formInputSize;
+        }
+        .form--input::-moz-placeholder {
+            /* Firefox 19+ */
+            @include formInputSize;
+        }
+    
+        .form--input:hover {
+            box-shadow: 0px 0px 10px 0px rgba(25, 174, 223, 0.25);
+        }
+    
+        .form--input:focus {
+            outline: 1px solid $color-main;
+        }
+    
+        .form--input:-webkit-autofill,
+        .form--input:-webkit-autofill:hover,
+        .form--input:-webkit-autofill:focus {
+            @include fieldTextSelected;
+        }
+    }
+    
+    .form-login--input__error {
+        @include inputError;
+    }
+    
+    .form--error {
+        position: relative;
+    
+        .form--label {
+            position: absolute;
+            @include normalP;
+            color: #fff !important;
+            top: -27px;
+        }
+        
+        .form--input {
+            @include formInput;
+            border: 1px solid #f55f44;
+        }
+    
+        .form--input::placeholder {
+            @include formInputSize;
+        }
+        .form--input:-ms-input-placeholder {
+            /* IE 10+ */
+            @include formInputSize;
+        }
+        .form--input::-webkit-input-placeholder {
+            /* WebKit */
+            @include formInputSize;
+        }
+        .form--input::-moz-placeholder {
+            /* Firefox 19+ */
+            @include formInputSize;
+        }
+    
+        .form--input:hover {
+            box-shadow: 0px 0px 10px 0px rgba(245, 95, 68, 0.25);
+        }
+    
+        .form--input:focus {
+            outline: 1px solid #f55f44;
+        }
+    
+        .form--input:-webkit-autofill,
+        .form--input:-webkit-autofill:hover,
+        .form--input:-webkit-autofill:focus {
+            @include fieldTextSelected;
+        }
+    }
+}
