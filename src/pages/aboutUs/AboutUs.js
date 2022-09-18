@@ -1,7 +1,7 @@
 import React from 'react'
 import Navbar from '../../utils/Navbar'
 
-const Aboutus = () => {
+const AboutUs = () => {
   return (
     <div className="about-us--wrapper">
       <Navbar />
@@ -22,4 +22,4 @@ const Aboutus = () => {
   )
 }
 
-export default Aboutus
+export default AboutUs

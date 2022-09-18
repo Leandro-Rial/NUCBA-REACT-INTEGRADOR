@@ -18,7 +18,7 @@ const reducers = combineReducers({
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: [recommendedSlices],
+  whitelist: [recommendedSlices, categoriesSlices],
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);

@@ -2,8 +2,8 @@ export const Categories = [
     {
       id: 1,
       img: 'https://w7.pngwing.com/pngs/924/257/png-transparent-apple-electric-car-project-cupertino-apple-iphone-electronics-heart-logo.png',
-      title: 'Iphones',
-      category: 'Iphones',
+      title: 'iPhone',
+      category: 'iPhone',
     },
     {
       id: 2,
@@ -14,8 +14,8 @@ export const Categories = [
     {
       id: 3,
       img: 'https://w7.pngwing.com/pngs/924/257/png-transparent-apple-electric-car-project-cupertino-apple-iphone-electronics-heart-logo.png',
-      title: 'Macbooks',
-      category: 'Macbooks',
+      title: 'Macbook',
+      category: 'Macbook',
     },
     {
       id: 4,

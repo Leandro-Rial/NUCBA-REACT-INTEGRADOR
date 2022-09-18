@@ -9,12 +9,16 @@ const CardCategory = ({ img, title, category }) => {
 
     return (
         <div
-            className="card-category--wrapper"
+            className={ selectedCategory === category ? "card-category--wrapper card-category-selected--wrapper" : "card-category--wrapper" }
             selected={selectedCategory === category}
             onClick={() => dispatch(SELECTED_CATEGORY(category))}
         >
-            <img src={img} alt={title} className="card--img" />
-            <h3 className="card--title">{title}</h3>
+            <div className="card--img--wrapper">
+                <img src={img} alt={title} className="card--img" />
+            </div>
+            <div className="text--wrapper">
+                <h3 className="card--title">{title}</h3>
+            </div>
         </div>
     )
 }

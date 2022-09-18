@@ -8,8 +8,8 @@ $input-background: #2B354D;
 $register-background: #1C2436;
 
 @mixin scrollBar {
-    overflow-y: auto;
-    overflow-x: hidden;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
     
     &::-webkit-scrollbar {
         width: 4px; /* Tamaño del scroll en vertical */
@@ -223,6 +223,7 @@ $register-background: #1C2436;
 @import './utils/buttonGoogle';
 @import './utils/navbar';
 @import './utils/cards/cardsProducts';
+@import './utils/cards/cardsCategories';
 
 body {
     background: #0a0a1c;

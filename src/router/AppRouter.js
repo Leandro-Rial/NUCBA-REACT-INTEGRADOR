@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Login from '../pages/auth/Login';
 import Register from '../pages/auth/Register';
 import Home from '../pages/home/Home';
-import Aboutus from '../pages/aboutUs/AboutUs';
+import AboutUs from '../pages/aboutUs/AboutUs';
 import ProductsView from '../pages/products/ProductsView';
 import PrivateRouter from './PrivateRouter';
 
@@ -45,7 +45,7 @@ const AppRouter = () => {
           path='/about-us'
           element={
             <PrivateRouter>
-              <Aboutus />
+              <AboutUs />
             </PrivateRouter>
           }
         />
