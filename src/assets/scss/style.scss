@@ -216,6 +216,9 @@ $register-background: #1C2436;
 /* SUCCESS */
 @import './pages/success/success';
 
+/* PAGE NOT FOUND */
+@import './pages/pageNotFound';
+
 // UTILS
 @import './utils/inputs';
 @import './utils/login-register-links';

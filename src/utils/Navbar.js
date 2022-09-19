@@ -25,7 +25,7 @@ const Navbar = () => {
 
       <div className="offcanvas offcanvas-end" tabIndex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
         <div className="offcanvas-header">
-          <h5 className="offcanvas-title" id="offcanvasRightLabel">Welcome Jorgito Porcel JR</h5>
+          <h5 className="offcanvas-title" id="offcanvasRightLabel">Welcome {user.displayName}</h5>
           <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close" style={{ color: "#fff" }}></button>
         </div>
         <div className="offcanvas-body">

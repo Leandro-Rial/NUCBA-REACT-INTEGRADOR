@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { firebaseConfig } from './FirebaseConfig';
-import { showMessage } from '../Toasts';
+import { showMessage, showSuccess } from '../Toasts';
 
 import {
   getAuth,
@@ -11,6 +11,7 @@ import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   signOut,
+  updateProfile,
 } from 'firebase/auth';
 
 const app = initializeApp(firebaseConfig);
@@ -26,6 +27,10 @@ export const signUp = async (email, password, username) => {
     password
   )
 
+  updateProfile(auth.currentUser, {
+    displayName: username
+  })
+
   await sendEmailVerification(credentials.user, {
     url: `${process.env.REACT_APP_URL}/`,
   });
@@ -39,7 +44,7 @@ export const resetPassword = async email => {
   await sendPasswordResetEmail(auth, email, {
     url: `${process.env.REACT_APP_URL}/login`,
   });
-  alert(`A password recovery email was sent to ${email}`);
+  showSuccess(`A password recovery email was sent to ${email}`);
 };
 
 const providerGoogle = new GoogleAuthProvider();

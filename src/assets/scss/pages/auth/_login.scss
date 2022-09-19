@@ -8,6 +8,7 @@
     padding: 20px 0;
 
     .login--title {
+        text-align: center;
         @include normalTitle;
         margin-bottom: 40px;
     }

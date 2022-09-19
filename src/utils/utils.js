@@ -1,3 +1,5 @@
+export const isUserLoggedIn = () => localStorage.getItem('token-wp')
+
 export function getRandom(arr, n) {
     var result = new Array(n),
         len = arr.length,

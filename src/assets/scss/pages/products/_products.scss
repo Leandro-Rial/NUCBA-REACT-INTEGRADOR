@@ -3,6 +3,7 @@
     padding: 20px;
 
     .products--title {
+        text-align: center;
         @include boldTitle;
         margin-bottom: 20px;
     }

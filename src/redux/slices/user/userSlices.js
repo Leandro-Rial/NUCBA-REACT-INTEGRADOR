@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { signIn, signInGoogle, logOut, signUp } from "../../../utils/firebase/Firebase";
+import { signIn, signInGoogle, logOut, signUp, resetPassword } from "../../../utils/firebase/Firebase";
 import { showError } from "../../../utils/Toasts";
 
 const ERROR_CODES = {
@@ -7,6 +7,7 @@ const ERROR_CODES = {
   NOT_FOUND_USER: 'auth/user-not-found',
   EMAIL_IN_USE: 'auth/email-already-in-use',
   WEAK_PASSWORD: 'auth/weak-password',
+  NOT_FOUND: 'auth/user-not-found',
 };
 
 export const login = createAsyncThunk("auth/login", async (data) => {
@@ -80,6 +81,25 @@ export const register = createAsyncThunk("auth/register", async (data) => {
   }
 })
 
+export const forgotPassword = createAsyncThunk("auth/forgotPassword", async (data) => {
+  try {
+  
+    const { email } = data;
+
+    await resetPassword(email)
+
+    return
+  } catch (error) {
+    const { code } = error
+    switch (code) {
+      case ERROR_CODES.NOT_FOUND:
+        return showError('The mail does not exist');
+      default:
+        return showError('Oops! Something went wrong. Please try again later.');
+    }
+  }
+})
+
 export const logout = createAsyncThunk("auth/logout", async () => {
   try {
 
@@ -101,11 +121,6 @@ const userSlices = createSlice({
   initialState: {
     token: null,
     user: null
-  },
-  reducers: {
-    'SET_USER': (state, action) => {
-      return { ...state, user: action.payload };
-    }
   },
   extraReducers: {
     // LOGIN
@@ -159,6 +174,21 @@ const userSlices = createSlice({
       state.error = action.payload
     },
 
+    // FORGOTPASSWORD
+    // LOADING
+    [forgotPassword.pending]: (state, action) => {
+      state.status = "loading"
+    },
+    // POSTS
+    [forgotPassword.fulfilled]: (state, action) => {
+      state.status = "success"
+    },
+    // ERROR
+    [forgotPassword.rejected]: (state, action) => {
+      state.status = "failed"
+      state.error = action.payload
+    },
+
     // LOGOUT
     // LOADING
     [logout.pending]: (state, action) => {
@@ -177,7 +207,5 @@ const userSlices = createSlice({
     },
   }
 });
-
-export const { SET_USER } = userSlices.actions;
 
 export default userSlices.reducer;

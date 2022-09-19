@@ -15,23 +15,22 @@ import {
   Route,
   Navigate
 } from "react-router-dom";
-import { useSelector } from 'react-redux';
+import { isUserLoggedIn } from '../utils/utils';
+import ForgotPassword from '../pages/forgotPassword/ForgotPassword';
 
 const AppRouter = () => {
-
-  const { token } = useSelector(state => state.user);
-
   return (
     <Router>
       <Routes>
         <Route
           exact
           path='/'
-          element={ token ? <Navigate to="/home" /> : <Navigate to='/login' /> }
+          element={ isUserLoggedIn() ? <Navigate to="/home" /> : <Navigate to='/login' /> }
         />
 
         <Route exact path='/login' element={<Login />} />
         <Route exact path='/sign-up' element={<Register />} />
+        <Route exact path='/forgot-password' element={<ForgotPassword />} />
 
         <Route
           path='/home'

@@ -10,6 +10,7 @@
         @include flexboxCenter;
         
         h1 {
+            text-align: center;
             @include boldTitle;
             margin-bottom: 20px;
         }

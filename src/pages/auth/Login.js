@@ -90,6 +90,9 @@ const Login = () => {
             </div>
             <div>
               <div className="no-account--texts">
+                <p className='texts--p'>Don't remember the password? <Link to="/forgot-password" className="texts-link">Change it here</Link></p>
+              </div>
+              <div className="no-account--texts">
                 <p className='texts--p'>You do not have an account? <Link to="/sign-up" className="texts-link">Sign up here</Link></p>
               </div>
               <div className="btns--wrapper">

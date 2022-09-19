@@ -3,6 +3,7 @@
     padding: 20px;
 
     .news--title {
+        text-align: center;
         @include boldTitle;
         margin-bottom: 20px;
     }
